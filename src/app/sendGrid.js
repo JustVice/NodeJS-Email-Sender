@@ -5,11 +5,13 @@
  * html for HTML content.
  */
 module.exports = function sendEmail(args) {
+  // Config and requirements.
   const sgMail = require('@sendgrid/mail');
   const datetime = new Date();
   const messageEnd = "||||Date: " + datetime + ". IP address: " + args.ipAddress + "||||";
   require('dotenv').config();
 
+  // SendGrid API set.
   sgMail.setApiKey(process.env.VMAILER_SENDGRID_API);
 
   let subject = "No subject";
@@ -37,6 +39,7 @@ module.exports = function sendEmail(args) {
     html: html,
   };
 
+  // Email send function.
   sgMail.send(msg)
     .then((msg) => { console.log(msg) })
     .catch((err) => { console.log(err) });

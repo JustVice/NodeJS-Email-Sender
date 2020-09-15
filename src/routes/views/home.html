@@ -4,24 +4,16 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VICE's Mailer</title>
+    <title>NodeJS Email Sender</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="h1">VICEs Mailer</div>
+        <div class="h1">NodeJS Email Sender</div>
+        <div class="h5">Version 1.0.0</div>
         <p>
             Hey there, what are you doing here? This is just a backend server I made to send Emails to myself as
             notifications.
@@ -30,18 +22,73 @@
             You are not supposed to be here =v=
         </p>
         <div class="h4">Programmer helpful links</div>
-        <a href="https://justvice.github.io/links" target="_blank">Website - Links</a>
-        <br>
-        <a href="https://justvice.github.io/s/twitter" target="_blank">My Twitter</a>
-        <br>
-        <a href="https://justvice.github.io/send-message" target="_blank">Send a Message (page that uses this
-            server)</a>
-        <br><br>
+        <ul>
+            <li>
+                <a href="https://justvice.github.io/technology/web-software/nodejs-email-sender/" target="_blank">NodeJS Email Sender's website.</a>
+            </li>
+            <li>
+                <a href="https://justvice.github.io/s/twitter" target="_blank">Programmer's Twitter.</a>
+            </li>
+            <li>
+                <a href="https://justvice.github.io/send-message" target="_blank">Send a Message (page that uses this
+                    application).</a>
+            </li>
+            <li>
+                <a href="https://www.github.com/justvice/nodejs-email-sender" target="_blank">NodeJS Email Sender
+                    Github's repository.</a>
+            </li>
+        </ul>
+
         <div class="h4">Credits</div>
         <ul>
-            <li>Server host: Heroku.</li>
-            <li>Mail service: SendGrid.</li>
+            <li>Server host: <a href="https://www.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku.</a>
+            </li>
+            <li>Mail service: <a href="https://sendgrid.com/" target="_blank" rel="noopener noreferrer">SendGrid.</a>
+            </li>
         </ul>
+        <hr>
+        <div class="h3">For developers</div>
+        <div class="h4">API</div>
+        The application only counts with one single route for API:
+        <br>
+        GET & post on http://app/sendemail
+        <br><br>
+        <div class="h5">GET /sendemail</div>
+        Returns JSON with a single key: <b>status</b>.
+        <br>
+        Example: {"status":"up"}
+        <br>
+        The purpose of this route and method is to check if the service is up.
+        <br><br>
+        <div class="h5">POST /sendemail</div>
+        <p>
+            This route can be used to send the Emails.
+            <br>
+            Route needs at least 3 parameters but not obligatory:
+            <br>
+            JSON with following keys:
+            <br>
+        <pre>
+            {
+                "<b>subject</b>":"Subject of the Email",
+                "<b>text</b>":"Plaintext content of the Email.",
+                "<b>html</b>":"HTML content of the Email."
+            }
+        </pre>
+        If the process is successful, JSON with key <b>status</b> will be <b>success</b>.
+        </p>
+        <div class="h5">SendGrid</div>
+        <p>
+            The application works with SendGrid service. If you want to run your own Email Sender with this software you
+            must use SendGrid service or to modify the code.
+        </p>
+        <div class="h5">Notice</div>
+        <p>
+            If you try this service, even though you can see a success message when attempting to send an Email, it
+            probably wasn't send.
+            <br>
+            SendGrid only allows verified accounts through it's internal settings to send Emails.
+        </p>
     </div>
 </body>
 

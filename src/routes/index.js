@@ -7,10 +7,12 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "views", "home.html"));
 });
 
+// This route's purpose is to check if application is running.
 router.get('/sendemail', (req, res) => {
-    res.json({ "titulo": "hello world", "ip": req.connection.remoteAddress });
+    res.json({ "status": "up"});
 });
 
+// Route to send email.
 router.post('/sendemail', (req, res) => {
     const sendGrid = require("../app/sendGrid");
     sendGrid({
