@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const path = require("path");
 
-// Renders a welcome page for those curious people.
+// Unique home page.
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "views", "home.html"));
 });
