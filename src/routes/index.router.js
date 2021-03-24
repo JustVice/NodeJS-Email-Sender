@@ -1,10 +1,9 @@
 const { Router } = require('express');
 const router = Router();
-const path = require("path");
 
 // Unique home page.
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, "views", "home.html"));
+    res.sendFile('index.html');
 });
 
 // This route's purpose is to check if application is running.
@@ -14,13 +13,14 @@ router.get('/sendemail', (req, res) => {
 
 // Route to send email.
 router.post('/sendemail', (req, res) => {
-    const sendGrid = require("../app/sendGrid");
-    sendGrid({
+    const sendGrid_lib = require("../lib/sendGrid");
+    const userIp =req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    sendGrid_lib({
         "subject": req.body.subject,
         "text": req.body.text,
         "html": req.body.html,
-        "ipAddress": req.connection.remoteAddress
-    })
+        "ipAddress": userIp
+    });
     res.json({ "status": "success" });
 });
 
