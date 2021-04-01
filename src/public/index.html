@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NodeJS Email Sender</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -17,7 +18,8 @@
         <div class="h4">Programmer helpful links</div>
         <ul>
             <li>
-                <a href="https://justvice.github.io/technology/web-software/nodejs-email-sender/" target="_blank">NodeJS Email Sender's website.</a>
+                <a href="https://justvice.github.io/technology/web-software/nodejs-email-sender/" target="_blank">NodeJS
+                    Email Sender's website.</a>
             </li>
             <li>
                 <a href="https://justvice.github.io/s/twitter" target="_blank">Programmer's Twitter.</a>
@@ -35,21 +37,22 @@
         <ul>
             <li>Server host: <a href="https://www.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku.</a>
             </li>
-            <li>Mail service: <a href="https://sendgrid.com/" target="_blank" rel="noopener noreferrer">SendGrid.</a>
+            <li>Email service: <a href="https://sendgrid.com/" target="_blank" rel="noopener noreferrer">SendGrid.</a>
             </li>
         </ul>
         <hr>
         <div class="h3">For developers</div>
         <div class="h4">API</div>
-        The application only counts with one single route for API:
+        The application only counts with one single API route:
         <br>
-        GET & post on http://app/sendemail
+        http://app/sendemail
         <br><br>
         <div class="h5">GET /sendemail</div>
         Returns JSON with a single key: <b>status</b>.
-        <br>
-        Example: {"status":"up"}
-        <br>
+        <br><br>
+        <pre>
+{ "status" : "up" }
+        </pre>
         The purpose of this route and method is to check if the service is up.
         <br><br>
         <div class="h5">POST /sendemail</div>
@@ -61,18 +64,29 @@
             JSON with following keys:
             <br>
         <pre>
-            {
-                "<b>subject</b>":"Subject of the Email",
-                "<b>text</b>":"Plaintext content of the Email.",
-                "<b>html</b>":"HTML content of the Email."
-            }
+{
+    "<b>subject</b>":"Subject of the Email",
+    "<b>text</b>":"Plaintext content of the Email.",
+    "<b>html</b>":"HTML content of the Email."
+}
         </pre>
-        If the process is successful, JSON with key <b>status</b> will be <b>success</b>.
+        If the process is successful, the following JSON is returned:
+        <pre>
+
+{ "status": 'success', "description": 'email sent' }
+        </pre>
+        If the process is failed, the following JSON is returned:
+        <pre>
+
+{ "status": 'failed', "description": 'error 500' }
+        </pre>
         </p>
         <div class="h5">SendGrid</div>
         <p>
-            The application works with SendGrid service. If you want to run your own Email Sender with this software you
+            The application works with SendGrid service. If you want to run your own NodeJS Email Sender you
             must use SendGrid service or to modify the code.
+            <br><br>
+            <a href="https://sendgrid.com/" target="_blank" rel="noopener noreferrer">SendGrid</a>
         </p>
     </div>
 </body>

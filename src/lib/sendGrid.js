@@ -6,7 +6,7 @@
  * @param { String } "args.html" for HTML content.
  * @param { String } "args.ipAddress" IP address of client.
  */
-module.exports = function sendEmail(args) {
+module.exports = async function sendEmail(args) {
   require('dotenv').config();
   const sgMail = require('@sendgrid/mail'),
     date = new Date(),
@@ -16,7 +16,7 @@ module.exports = function sendEmail(args) {
     text = "No text." + messageEnd,
     html = "No HTML. " + messageEnd;
 
-  sgMail.setApiKey(process.env.VMAILER_SENDGRID_API); // SendGrid API.
+  sgMail.setApiKey(process.env.SENDGRID_API); // SendGrid API.
 
   if (args.subject)
     subject = args.subject;
@@ -29,15 +29,12 @@ module.exports = function sendEmail(args) {
 
   // Message structure.
   const msg = {
-    to: process.env.VMAILER_TO,
-    from: process.env.VMAILER_FROM,
+    to: process.env.SENDGRID_MAILTO,
+    from: process.env.SENDGRID_MAILFROM,
     subject: subject,
     text: text,
     html: html,
   };
 
-  // Email send function.
-  sgMail.send(msg)
-    .then((msg) => { console.log(msg) })
-    .catch((err) => { console.log(err) });
+  return await sgMail.send(msg);
 }

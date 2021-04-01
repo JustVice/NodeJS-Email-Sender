@@ -7,7 +7,12 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
-  "keywords": ["SendGrid", "JUST VICE", "NodeJS", "Email sending"],
+  "keywords": [
+    "SendGrid",
+    "JUST VICE",
+    "NodeJS",
+    "Email sending"
+  ],
   "author": "JUST VICE",
   "license": "MIT",
   "dependencies": {
