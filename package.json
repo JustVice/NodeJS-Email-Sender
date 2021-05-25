@@ -1,6 +1,6 @@
 {
   "name": "nodejs-email-sender",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "src/server.js",
   "scripts": {
@@ -9,11 +9,11 @@
   },
   "keywords": [
     "SendGrid",
-    "JUST VICE",
+    "SPLIT VICE",
     "NodeJS",
     "Email sending"
   ],
-  "author": "JUST VICE",
+  "author": "SPLIT VICE",
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^7.2.5",
